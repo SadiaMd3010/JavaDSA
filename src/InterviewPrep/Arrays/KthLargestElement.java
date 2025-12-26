@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class KthLargestElement {
     public static void main(String[] args) {
-        int[] arr = {5, 9, 1, 2, 4, 8, 9, 8};
+        int[] arr = {5, 9, 9,8,1, 2, 4, 8, 9, 8};
         int k = 3;
         Arrays.sort(arr);
         int count=1;

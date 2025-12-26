@@ -1,39 +1,44 @@
 package InterviewPrep.Arrays;
-
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Prac {
+    public static List<Integer> setDifference(int[] nums1, int[] nums2) {
+        List<Integer> result = new ArrayList<>();
+        int i = 0, j = 0;
+
+        while (i < nums1.length && j < nums2.length) {
+            if (nums1[i] == nums2[j]) {
+                // Skip common elements
+                i++;
+                j++;
+            } else if (nums1[i] < nums2[j]) {
+                result.add(nums1[i]);
+                i++;
+            } else {
+                result.add(nums2[j]);
+                j++;
+            }
+        }
+
+        // Add remaining elements from nums1
+        while (i < nums1.length) {
+            result.add(nums1[i++]);
+        }
+
+        // Add remaining elements from nums2
+        while (j < nums2.length) {
+            result.add(nums2[j++]);
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
-      String s ="tttreeess";
-      int k=3;
-      int hash[]= new int[26];
-      for(int i=0;i<s.length();i++) {
-          hash[s.charAt(i)-'a']++;
-      }
+        int[] nums1 = {1, 2, 6, 6};
+        int[] nums2 = {-2, 2, 3, 4, 6};
 
-
-      List<int[]> list = new ArrayList<>();
-      for(int i=0;i<hash.length;i++) {
-          if(hash[i]>0) {
-              list.add(new int[]{i,hash[i]});
-          }
-      }
-
-      Collections.sort(list,(a,b) -> b[1]-a[1]);
-      int last= list.get(0)[1];
-      int rank=1;
-      for(int i=1;i<list.size();i++) {
-          int current= list.get(i)[1];
-          if(current!=last) {
-              rank++;
-              last=current;
-          }
-          if(rank==k) {
-              System.out.println((char)(list.get(i)[0]+'a'));
-          }
-      }
+        List<Integer> diff = setDifference(nums1, nums2);
+        System.out.println(diff); // Output: [3, 4, 5, 9]
     }
-    }
+}

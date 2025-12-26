@@ -36,6 +36,7 @@ public class TwoSUm {
 //
 //        }
 
+
         //Optimal - for varity 1 , yes or no
         Arrays.sort(a);
         int left=0;

@@ -27,30 +27,34 @@ public class RotateMatrix {
             }
         }
 
-        for(int i=0;i<a.length;i++) {
-            for (int j = 0; j < a.length / 2; j++) {
-                int temp = a[i][j];
-                a[i][j] = a[i][a.length - j - 1];
-                a[i][a.length - j - 1] = temp;
-            }
-        }
-
-        //OR
-//        public static void reverseRows(int[][] a) {
-//            for (int i = 0; i < a.length; i++) {
-//                int left = 0, right = a[i].length - 1;
-//                while (left < right) {
-//                    int temp = a[i][left];
-//                    a[i][left] = a[i][right];
-//                    a[i][right] = temp;
-//                    left++;
-//                    right--;
-//                }
+//        for(int i=0;i<a.length;i++) {
+//            for (int j = 0; j < a.length / 2; j++) {
+//                int temp = a[i][j];
+//                a[i][j] = a[i][a.length - j - 1];
+//                a[i][a.length - j - 1] = temp;
 //            }
 //        }
+
+
+
+        //OR
+        reverseRows(a);
         System.out.println(Arrays.deepToString(a));
 
 
-
     }
+
+    public static void reverseRows(int[][] a) {
+        for (int i = 0; i < a.length; i++) {
+            int left = 0, right = a[i].length - 1;
+            while (left < right) {
+                int temp = a[i][left];
+                a[i][left] = a[i][right];
+                a[i][right] = temp;
+                left++;
+                right--;
+            }
+        }
+    }
+
 }
